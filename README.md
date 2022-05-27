@@ -126,3 +126,5 @@ A submissão deve ser realizada até o dia 07/06/2021 às 13h59min, horário de 
 - A chave `run_once` com valor `true` (*e.g.* `run_once: true`) pode ser adicionada a uma *task* para ela seja executada apenas um único *host* qualquer.
 
 - Para longas tarefas (execução da aplicação ou construção da imagem Docker, por exemplo), o Ansible fornece as chaves [`pool`](https://docs.ansible.com/ansible/latest/user_guide/playbooks_async.html#asynchronous-playbook-tasks) e [`async`](https://docs.ansible.com/ansible/latest/user_guide/playbooks_async.html#asynchronous-playbook-tasks) para evitar desconexões SSH ao executar as tarefas. Valores como `pool: 30` e `async: 1200` podem ser razoáveis para as tarefas de execução daaplicação e criação da imagem Docker, caso necessite.
+
+- Mais exemplos sobre o uso da API e da linha de comando podem ser encontrados no diretório `examples` do CLAP
