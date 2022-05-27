@@ -56,7 +56,7 @@ Para preparação do ambiente, os seguintes passos devem ser realizados:
 
 2. Escreva o seu `Access Key ID` em um arquivo denominado `ec2_access_key.pub` e o seu `Secret access key` em um arquivo chamado `ec2_access_key.pem`. Estes arquivos devem ser salvos dentro do diretório `clap_config/private/`.
 
-3. Copie sua chave privada, utilizada para acessar as máquinas da AWS, para o diretorio `clap_config/private` e renomei-a para `key.pem`. Copie também sua chave pública para o diretorio `clap_config/private` e renomei-a para `key.pub`. Vale ressaltar que a chave pública pode ser gerada a partir da chave privada, utilizando o seguinte comando: `ssh-keygen -y -f key.pem > key.pub`.
+3. Copie sua chave privada, utilizada para acessar as máquinas da AWS, para o diretorio `clap_config/private` e renomei-a para `key.pem`. Copie também sua chave pública para o diretorio `clap_config/private` e renomei-a para `key.pub`. Vale ressaltar que a chave pública pode ser gerada a partir da chave privada, utilizando o seguinte comando: `ssh-keygen -y -f key.pem > key.pub`. Além disso, o campo `keypair_name` do arquivo `clap_config/config/logins.yaml` deve ser alterado para o respectivoe seu `KEYPAIR_NAME`.
 
 4. Execute o *script* `run_jupyter.sh` que irá iniciar um servidor jupyter-lab na máquina local. Este pode ser acessado através do endereço `localhost:8888` por um navegador de sua preferência.
 
