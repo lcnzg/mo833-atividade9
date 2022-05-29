@@ -4,4 +4,4 @@
 # Este script não deve ser alterado
 
 source ./vars.sh
-$CONTAINER_CMD build -t $CONTAINER_IMAGE -f Dockerfile.dev
+$CONTAINER_CMD build -t $CONTAINER_IMAGE . 
