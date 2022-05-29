@@ -37,7 +37,7 @@ O presente repositório deve ser clonado e executado apenas na máquina local.
 O clone deve ser realizado com o comando abaixo:
 
 ```
-git clone --recurse-submodules https://github.com/otavioon/mo833-atividade9.git
+git clone --recurse-submodules https://github.com/eborin/mo833-atividade9.git
 ```
 
 
