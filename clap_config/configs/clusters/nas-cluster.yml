@@ -14,7 +14,7 @@ setups:
 clusters:
   npb-cluster:
     nodes:
-      npb-type-t2.medium:
+      npb-type-b:
         type: type-t2.medium
         count: 2
         setups:
