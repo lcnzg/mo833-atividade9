@@ -1,6 +1,6 @@
 login-ubuntu:
     user: ubuntu
-    keypair_name: otavio_aws_2022_key
+    keypair_name: 
     keypair_public_file: key.pub
     keypair_private_file: key.pem
     sudo: true
