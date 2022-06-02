@@ -1,6 +1,6 @@
 login-ubuntu:
     user: ubuntu
-    keypair_name: 
+    keypair_name: luciano-zago-ansible
     keypair_public_file: key.pub
     keypair_private_file: key.pem
     sudo: true

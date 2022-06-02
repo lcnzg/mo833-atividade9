@@ -10,6 +10,8 @@ actions:
       description: Location where EFS filesystem will be mounted
     - name: user_dir
       description: Location where user files resides on EFS
+    - name: results_dir
+      description: Location where results should be placed (in remote machine)
 
   run:
     playbook: roles/dcgan_run.yaml
@@ -23,12 +25,16 @@ actions:
       description: Location where CIFAR-10 is located
     - name: master_hostname
       descrition: Hostname of the master node
+    - name: results_dir
+      description: Location where results should be placed (in remote machine)
 
   results:
     playbook: roles/dcgan_results.yaml
     description: Fetch results
     vars:
     - name: results_dir
+      description: Location where results should be placed (in remote machine)
+    - name: results_dir_local
       description: Location where results should be placed (in local machine)
     - name: user_dir
       description: Location where user files resides on EFS

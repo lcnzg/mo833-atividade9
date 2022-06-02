@@ -4,4 +4,10 @@
   tasks:
   - name: "Task 1: Lista as variáveis recebidas"
     debug:
-      msg: "Variaveis: results_dir: {{ results_dir }}; user_dir: {{ user_dir }}"
+      msg: "Variaveis: results_dir: {{ results_dir }}; results_dir_local: {{ results_dir_local }}; user_dir: {{ user_dir }}; node_rank: {{ node_rank }}; ansible_play_hosts: {{ ansible_play_hosts }}"
+
+  - name: "Task 2: Copia os arquivos output-*.txt"
+    fetch:
+      src: "{{ results_dir }}/output/cluster-{{ ansible_play_hosts | length }}/output-{{ node_rank }}.txt"
+      dest: "{{ results_dir_local }}/cluster-{{ ansible_play_hosts | length }}/"
+      flat: yes

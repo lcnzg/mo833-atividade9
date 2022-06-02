@@ -1,7 +1,16 @@
 - name: "Run Play"
   hosts: all
   gather_facts: false
+  vars:
+    master_ip: "{{ hostvars[ vars['master_hostname'] ].ansible_host }}"
+    out_folder: "{{ results_dir }}/output/cluster-{{ ansible_play_hosts | length }}"
   tasks:
   - name: "Task 1: Lista as variáveis recebidas"
     debug:
-      msg: "Variaveis: efs_mount_point: {{ efs_mount_point }}; user_dir: {{ user_dir }}; cifar_data_dir: {{ cifar_data_dir }}; master_hostname: {{ master_hostname }}"
+      msg: "Variaveis: user_dir: {{ user_dir }}; cifar_data_dir: {{ cifar_data_dir }}; master_hostname: {{ master_hostname }}; node_rank: {{ node_rank }}; results_dir: {{ results_dir }}; master_ip: {{ master_ip }}"
+
+  - name: "Task 2: Executar a DCGAN"
+    ansible.builtin.shell: docker run --network=host --rm -e HOMEDIR=$(pwd) -w $(pwd) -v={{ cifar_data_dir }}:{{ cifar_data_dir }} -v=$(pwd):$(pwd) -v={{ out_folder }}:{{ out_folder }} dist_dcgan:latest python -m torch.distributed.launch --nproc_per_node=1 --nnodes={{ ansible_play_hosts | length }} --node_rank={{ node_rank }} --master_addr={{ master_ip }} --master_port=1234 dist_dcgan.py --dataset cifar10 --dataroot {{ cifar_data_dir }} --image_size 64 --batch_size 128 --out_folder {{ out_folder }} --test_data --num_epochs 2 --max_workers 1 > {{ out_folder }}/output-{{ node_rank }}.txt
+    args:
+      chdir: "{{ user_dir }}/Distributed-DCGAN"
+    async: 600
